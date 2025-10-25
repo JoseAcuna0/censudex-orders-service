@@ -10,7 +10,7 @@ namespace order_service.src.Models
         public int Id { get; set; }
 
         public Guid OrderId { get; set; }
-        public Order Order { get; set; }
+        public Order Order { get; set; } = null!;
 
         public Guid ProductId { get; set; }
         public string ProductName { get; set; } = string.Empty;
