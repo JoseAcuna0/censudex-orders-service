@@ -17,7 +17,7 @@ namespace order_service.src.Models
 
         public decimal TotalAmount { get; set; } = 0.0m;
 
-        public string Status { get; set; } = "Pendiente";
+        public string Status { get; set; } = "pendiente";
 
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
     }
