@@ -9,7 +9,7 @@ namespace order_service.src.Mappers
 {
     public static class OrderMapper
     {
-        public static OrderResponseDto ToDto(this Order order)
+        public static OrderResponseDto ToResponseDto(Order order)
         {
             return new OrderResponseDto
             {
