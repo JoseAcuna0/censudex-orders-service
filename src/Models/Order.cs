@@ -7,7 +7,7 @@ namespace order_service.src.Models
 {
     public class Order
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
 
         public Guid CustomerId { get; set; }
