@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option csharp_namespace = "order_service";
+
+package orders;
+
+service OrderGrpcService {
+    rpc CreateOrder (CreateOrderRequest) returns (OrderResponse);
+    rpc GetOrderById (OrderByIdRequest) returns (OrderResponse);
+    rpc GetAllOrders (Empty) returns (OrdersListResponse);
+    rpc UpdateOrderStatus (UpdateStatusRequest) returns (OperationResult);
+    rpc CancelOrder (OrderByIdRequest) returns (OperationResult);
+}
+
+message CreateOrderRequest {
+    string customerId = 1;
+    string customerName = 2;
+    repeated OrderItemDto items = 3;
+}
+
+message OrderItemDto {
+    string productId = 1;
+    string productName = 2;
+    int32 quantity = 3;
+    double unitPrice = 4;
+}
+
+message OrderResponse {
+    string id = 1;
+    string customerId = 2;
+    string customerName = 3;
+    string orderDate = 4;
+    double totalAmount = 5;
+    string status = 6;
+    repeated OrderItemDto items = 7;
+}
+
+message OrdersListResponse {
+    repeated OrderResponse orders = 1;
+}
+
+message OrderByIdRequest {
+    string id = 1;
+}
+
+message UpdateStatusRequest {
+    string id = 1;
+    string newStatus = 2;
+}
+
+message OperationResult {
+    bool success = 1;
+    string message = 2;
+}
+
+message Empty {}
