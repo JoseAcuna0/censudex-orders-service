@@ -1,0 +1,8 @@
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.csproj.AssemblyReference.cache
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.AssemblyInfoInputs.cache
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.AssemblyInfo.cs
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.csproj.CoreCompileInputs.cache
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\OS\order-service\obj\Debug\net8.0\order-service.sourcelink.json

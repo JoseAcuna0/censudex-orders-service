@@ -19,7 +19,7 @@ namespace order_service.src.Mappers
                 OrderDate = order.OrderDate,
                 TotalAmount = order.TotalAmount,
                 Status = order.Status,
-                Items = order.Items.Select(item => new OrderItemDto
+                Items = order.Items.Select(item => new OrderItemAppDto
                 {
                     ProductId = item.ProductId,
                     ProductName = item.ProductName,

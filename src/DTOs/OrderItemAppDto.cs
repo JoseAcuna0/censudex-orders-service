@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace order_service.src.DTOs
 {
-    public class OrderItemDto
+    public class OrderItemAppDto
     {
         public Guid ProductId { get; set; }
         public string ProductName { get; set; } = string.Empty;
