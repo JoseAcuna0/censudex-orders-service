@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Grpc.Core;
+using order_service;
 using order_service.src.Interface;
-using order_service.src.Models;
+using order_service.src.DTOs;
 
 namespace order_service.src.Grpc
 {
@@ -16,30 +13,130 @@ namespace order_service.src.Grpc
         {
             _orderService = orderService;
         }
-    
-        public override Task<OrderResponse> GetOrderById(OrderByIdRequest request, ServerCallContext context)
+
+        public override async Task<OrderResponse> CreateOrder(CreateOrderRequest request, ServerCallContext context)
         {
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Not implemented yet"));
+            var dto = new OrderCreateDto
+            {
+                CustomerId = Guid.Parse(request.CustomerId),
+                CustomerName = request.CustomerName,
+                Items = request.Items.Select(i => new OrderItemAppDto
+                {
+                    ProductId = Guid.Parse(i.ProductId),
+                    ProductName = i.ProductName,
+                    Quantity = i.Quantity,
+                    UnitPrice = (decimal)i.UnitPrice
+                }).ToList()
+            };
+
+            var result = await _orderService.CreateOrderAsync(dto);
+
+            var response = new OrderResponse
+            {
+                Id = result.Id.ToString(),
+                CustomerId = result.CustomerId.ToString(),
+                CustomerName = result.CustomerName,
+                OrderDate = result.OrderDate.ToString("O"),
+                TotalAmount = (double)result.TotalAmount,
+                Status = result.Status
+            };
+
+            response.Items.AddRange(
+                result.Items.Select(x => new OrderItemDto
+                {
+                    ProductId = x.ProductId.ToString(),
+                    ProductName = x.ProductName,
+                    Quantity = x.Quantity,
+                    UnitPrice = (double)x.UnitPrice
+                })
+            );
+
+            return response;
         }
 
-        public override Task<OrdersListResponse> GetAllOrders(Empty request, ServerCallContext context)
+        public override async Task<OrderResponse> GetOrderById(OrderByIdRequest request, ServerCallContext context)
         {
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Not implemented yet"));
+            var result = await _orderService.GetOrderByIdAsync(Guid.Parse(request.Id));
+
+            if (result is null)
+                throw new RpcException(new Status(StatusCode.NotFound, $"Order {request.Id} not found"));
+
+            var response = new OrderResponse
+            {
+                Id = result.Id.ToString(),
+                CustomerId = result.CustomerId.ToString(),
+                CustomerName = result.CustomerName,
+                OrderDate = result.OrderDate.ToString("O"),
+                TotalAmount = (double)result.TotalAmount,
+                Status = result.Status
+            };
+
+            response.Items.AddRange(
+                result.Items.Select(x => new OrderItemDto
+                {
+                    ProductId = x.ProductId.ToString(),
+                    ProductName = x.ProductName,
+                    Quantity = x.Quantity,
+                    UnitPrice = (double)x.UnitPrice
+                })
+            );
+
+            return response;
         }
 
-        public override Task<OrderResponse> CreateOrder(CreateOrderRequest request, ServerCallContext context)
+        public override async Task<OrdersListResponse> GetAllOrders(Empty request, ServerCallContext context)
         {
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Not implemented yet"));
+            var orders = await _orderService.GetAllOrdersAsync();
+            var response = new OrdersListResponse();
+
+            foreach (var order in orders)
+            {
+                var orderResponse = new OrderResponse
+                {
+                    Id = order.Id.ToString(),
+                    CustomerId = order.CustomerId.ToString(),
+                    CustomerName = order.CustomerName,
+                    OrderDate = order.OrderDate.ToString("O"),
+                    TotalAmount = (double)order.TotalAmount,
+                    Status = order.Status
+                };
+
+                orderResponse.Items.AddRange(
+                    order.Items.Select(i => new OrderItemDto
+                    {
+                        ProductId = i.ProductId.ToString(),
+                        ProductName = i.ProductName,
+                        Quantity = i.Quantity,
+                        UnitPrice = (double)i.UnitPrice
+                    })
+                );
+
+                response.Orders.Add(orderResponse);
+            }
+
+            return response;
         }
 
-        public override Task<OperationResult> UpdateOrderStatus(UpdateStatusRequest request, ServerCallContext context)
+        public override async Task<OperationResult> UpdateOrderStatus(UpdateStatusRequest request, ServerCallContext context)
         {
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Not implemented yet"));
+            var success = await _orderService.UpdateOrderAsync(Guid.Parse(request.Id), request.NewStatus);
+
+            return new OperationResult
+            {
+                Success = success,
+                Message = success ? "Order status updated" : $"Order {request.Id} not found"
+            };
         }
 
-        public override Task<OperationResult> CancelOrder(OrderByIdRequest request, ServerCallContext context)
+        public override async Task<OperationResult> CancelOrder(OrderByIdRequest request, ServerCallContext context)
         {
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Not implemented yet"));
-        }  
+            var success = await _orderService.CancelOrderAsync(Guid.Parse(request.Id));
+
+            return new OperationResult
+            {
+                Success = success,
+                Message = success ? "Order cancelled" : $"Order {request.Id} not found"
+            };
+        }
     }
 }
