@@ -1,0 +1,68 @@
+## Build files
+bin/
+obj/
+out/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+
+# User-specific files
+*.swp
+*.user
+*.userosscache
+*.suo
+*.tmp
+*.DS_Store
+*.sln.docstates
+*.vs/
+
+# Logs
+*.log
+logs/
+
+# Database files (EF migrations generated locally)
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Environment variables / local configs
+*.env
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+
+# Rider / VS Code / IDE files
+.idea/
+.vscode/
+*.code-workspace
+
+# gRPC Generated temporary files (not needed in repo)
+**/*.marker
+**/GeneratedGrpc/
+
+# Docker
+docker-compose.override.yml
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Test results
+TestResult.xml
+TestResults/
+
+# Coverage files
+coverage*
+*.coverage
+*.coveragexml
+
+# node_modules (if you add gateway UI later)
+node_modules/
+
