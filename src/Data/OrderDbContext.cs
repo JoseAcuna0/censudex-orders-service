@@ -26,18 +26,20 @@ namespace order_service.src.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.CustomerName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Status).IsRequired().HasMaxLength(50);
-                entity.HasMany(e => e.Items)
-                      .WithOne()
-                      .HasForeignKey("OrderId")
-                      .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
             {
                 entity.HasKey(e => e.Id);
+
                 entity.Property(e => e.ProductName).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Quantity).IsRequired();
-                entity.Property(e => e.UnitPrice).IsRequired().HasColumnType("decimal(18,2)");
+                entity.Property(e => e.UnitPrice).HasColumnType("decimal(18,2)");
+
+                entity
+                    .HasOne(oi => oi.Order)
+                    .WithMany(o => o.Items)
+                    .HasForeignKey(oi => oi.OrderId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

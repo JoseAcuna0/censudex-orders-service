@@ -23,8 +23,14 @@ namespace order_service.src.Services
         public async Task<OrderResponseDto> CreateOrderAsync(OrderCreateDto dto)
         {
             var order = OrderMapper.ToEntity(dto);
-
             order.Id = Guid.NewGuid();
+            order.OrderDate = DateTime.UtcNow;
+
+            // ✅ Asignar OrderId a cada item
+            foreach (var item in order.Items)
+            {
+                item.OrderId = order.Id;
+            }
 
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
@@ -43,7 +49,6 @@ namespace order_service.src.Services
 
         public async Task<IEnumerable<OrderResponseDto>> GetAllOrdersAsync()
         {
-
             var orders = await _context.Orders
                 .Include(o => o.Items)
                 .ToListAsync();

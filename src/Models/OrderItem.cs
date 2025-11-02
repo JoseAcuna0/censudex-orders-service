@@ -16,12 +16,8 @@ namespace order_service.src.Models
         public string ProductName { get; set; } = string.Empty;
 
         public int Quantity { get; set; } = 1;
-
         public decimal UnitPrice { get; set; } = 0.0m;
 
-        public decimal TotalPrice
-        {
-            get { return Quantity * UnitPrice; }
-        }
+        public decimal TotalPrice => Quantity * UnitPrice;
     }
 }

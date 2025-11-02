@@ -3,9 +3,15 @@ using order_service.src.Interface;
 using order_service.src.Grpc;
 using order_service.src.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(5247, o => o.Protocols = HttpProtocols.Http2);
+});
 
 builder.Services.AddGrpc();
 

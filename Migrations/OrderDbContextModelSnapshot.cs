@@ -8,7 +8,7 @@ using order_service.src.Data;
 
 #nullable disable
 
-namespace order_service.src.Data.Migrations
+namespace order_service.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
     partial class OrderDbContextModelSnapshot : ModelSnapshot
@@ -63,9 +63,6 @@ namespace order_service.src.Data.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("OrderId1")
-                        .HasColumnType("char(36)");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("char(36)");
 
@@ -84,22 +81,14 @@ namespace order_service.src.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("OrderId1");
-
                     b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("order_service.src.Models.OrderItem", b =>
                 {
-                    b.HasOne("order_service.src.Models.Order", null)
+                    b.HasOne("order_service.src.Models.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("order_service.src.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
