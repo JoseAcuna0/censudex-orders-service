@@ -1,68 +1,53 @@
-## Build files
+## Build artifacts
 bin/
 obj/
 out/
 
-# NuGet packages
-*.nupkg
-*.snupkg
-packages/
-*.nuspec
-project.lock.json
-project.fragment.lock.json
-
-# User-specific files
-*.swp
+## User-specific files
 *.user
-*.userosscache
 *.suo
 *.tmp
-*.DS_Store
-*.sln.docstates
-*.vs/
-
-# Logs
+*.cache
 *.log
-logs/
 
-# Database files (EF migrations generated locally)
-*.db
-*.sqlite
-*.mdf
-*.ldf
-
-# Environment variables / local configs
-*.env
-appsettings.Development.json
-appsettings.Local.json
-appsettings.*.local.json
-
-# Rider / VS Code / IDE files
-.idea/
+## IDE specific
+.vs/
 .vscode/
 *.code-workspace
 
-# gRPC Generated temporary files (not needed in repo)
+## OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+## NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+
+## EF Design cache
+*.ide
+
+## Logs
+logs/
+
+## gRPC generated artifacts
 **/*.marker
 **/GeneratedGrpc/
 
-# Docker
-docker-compose.override.yml
+## Docker volumes
+mysql_data/
 
-# System files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Test results
-TestResult.xml
+## Test output
 TestResults/
+*.trx
+*.coverage*
+*.cov
 
-# Coverage files
-coverage*
-*.coverage
-*.coveragexml
-
-# node_modules (if you add gateway UI later)
+## Node modules (por si en el futuro agregas UI)
 node_modules/
 
+## IGNORE ENV FILES (importante)
+.env
+.env.*
