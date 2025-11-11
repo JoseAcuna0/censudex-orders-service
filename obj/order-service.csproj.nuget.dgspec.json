@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj": {}
+    "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj": {
+    "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj",
+        "projectUniqueName": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj",
         "projectName": "order-service",
-        "projectPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj",
+        "projectPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj",
         "packagesPath": "C:\\Users\\josea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\obj\\",
+        "outputPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josea\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -74,6 +74,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

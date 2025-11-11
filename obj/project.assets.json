@@ -1012,6 +1012,23 @@
           }
         }
       },
+      "RabbitMQ.Client/6.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.6.2": {
         "type": "package",
         "dependencies": {
@@ -1249,6 +1266,15 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "System.Memory/4.5.5": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
       "System.Reflection.Metadata/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -1329,7 +1355,7 @@
       "System.Threading.Channels/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/_._": {
+          "lib/net7.0/System.Threading.Channels.dll": {
             "related": ".xml"
           }
         },
@@ -3524,6 +3550,22 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
+    "RabbitMQ.Client/6.5.0": {
+      "sha512": "9hY5HiWPtCla1/l0WmXmLnqoX7iKE3neBQUWnetIJrRpOvTbO//XQfQDh++xgHCshL40Kv/6bR0HDkmJz46twg==",
+      "type": "package",
+      "path": "rabbitmq.client/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net461/RabbitMQ.Client.dll",
+        "lib/net461/RabbitMQ.Client.xml",
+        "lib/netstandard2.0/RabbitMQ.Client.dll",
+        "lib/netstandard2.0/RabbitMQ.Client.xml",
+        "rabbitmq.client.6.5.0.nupkg.sha512",
+        "rabbitmq.client.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.6.2": {
       "sha512": "+NB4UYVYN6AhDSjW0IJAd1AGD8V33gemFNLPaxKTtPkHB+HaKAKf9MGAEUPivEWvqeQfcKIw8lJaHq6LHljRuw==",
       "type": "package",
@@ -3889,6 +3931,29 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "type": "package",
+      "path": "system.memory/4.5.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.5.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Reflection.Metadata/7.0.0": {
       "sha512": "MclTG61lsD9sYdpNz9xsKBzjsmsfCtcMZYXz/IUr2zlhaTaABonlr1ESeompTgM+Xk+IwtGYU7/voh3YWB/fWw==",
       "type": "package",
@@ -4084,6 +4149,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 9.0.10",
       "Microsoft.Extensions.Configuration.Json >= 9.0.10",
       "Pomelo.EntityFrameworkCore.MySql >= 9.0.0",
+      "RabbitMQ.Client >= 6.5.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
@@ -4093,11 +4159,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj",
+      "projectUniqueName": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj",
       "projectName": "order-service",
-      "projectPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj",
+      "projectPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj",
       "packagesPath": "C:\\Users\\josea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\obj\\",
+      "outputPath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\josea\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4160,6 +4226,10 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[9.0.0, )"
+          },
+          "RabbitMQ.Client": {
+            "target": "Package",
+            "version": "[6.5.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

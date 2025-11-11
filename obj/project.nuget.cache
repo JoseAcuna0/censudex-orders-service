@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2yE/MSsn93k=",
+  "dgSpecHash": "ZsKd8WV+gP4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\OS\\order-service\\order-service.csproj",
+  "projectFilePath": "C:\\Users\\josea\\Desktop\\UCN\\8vo Semestre\\Arquitectura\\Proyectos-Talleres\\Taller2\\order-service\\order-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\josea\\.nuget\\packages\\google.protobuf\\3.33.0\\google.protobuf.3.33.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\grpc.aspnetcore\\2.71.0\\grpc.aspnetcore.2.71.0.nupkg.sha512",
@@ -51,6 +51,7 @@
     "C:\\Users\\josea\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\9.0.0\\pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
+    "C:\\Users\\josea\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
@@ -65,6 +66,7 @@
     "C:\\Users\\josea\\.nuget\\packages\\system.composition.typedparts\\7.0.0\\system.composition.typedparts.7.0.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.10\\system.diagnostics.diagnosticsource.9.0.10.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\system.io.pipelines\\9.0.10\\system.io.pipelines.9.0.10.nupkg.sha512",
+    "C:\\Users\\josea\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\josea\\.nuget\\packages\\system.text.encodings.web\\9.0.10\\system.text.encodings.web.9.0.10.nupkg.sha512",
