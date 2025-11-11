@@ -8,6 +8,7 @@ using order_service.src.DTOs;
 using order_service.src.Interface;
 using order_service.src.Mappers;
 using order_service.src.Models;
+using order_service.src.Messaging;
 
 namespace order_service.src.Services
 {
@@ -26,7 +27,6 @@ namespace order_service.src.Services
             order.Id = Guid.NewGuid();
             order.OrderDate = DateTime.UtcNow;
 
-            // ✅ Asignar OrderId a cada item
             foreach (var item in order.Items)
             {
                 item.OrderId = order.Id;
@@ -34,6 +34,9 @@ namespace order_service.src.Services
 
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
+
+            using var rabbit = new RabbitMqService();
+            rabbit.SendOrderToInventory(order.Id.ToString());
 
             return OrderMapper.ToResponseDto(order);
         }
