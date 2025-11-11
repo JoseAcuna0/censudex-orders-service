@@ -4,9 +4,11 @@ using order_service.src.Grpc;
 using order_service.src.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using order_service.src.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHostedService<InventoryResponseConsumer>();
 
 builder.WebHost.ConfigureKestrel(options =>
 {
