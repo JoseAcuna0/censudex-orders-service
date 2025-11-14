@@ -114,6 +114,12 @@ namespace order_service.src.Services
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return false;
 
+
+            if (order.Status == "Enviado" || order.Status == "Entregado")
+            {
+                return false;
+            }
+
             order.Status = "Cancelada";
             await _context.SaveChangesAsync();
 

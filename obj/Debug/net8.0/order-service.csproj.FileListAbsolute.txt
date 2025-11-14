@@ -300,3 +300,5 @@ C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\
 C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\order-service\obj\Debug\net8.0\order-service.pdb
 C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\order-service\obj\Debug\net8.0\order-service.genruntimeconfig.cache
 C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\order-service\obj\Debug\net8.0\ref\order-service.dll
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\order-service\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\josea\Desktop\UCN\8vo Semestre\Arquitectura\Proyectos-Talleres\Taller2\order-service\bin\Debug\net8.0\Sprache.dll
