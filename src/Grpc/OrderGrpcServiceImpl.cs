@@ -61,7 +61,7 @@ namespace order_service.src.Grpc
             var result = await _orderService.GetOrderByIdAsync(Guid.Parse(request.Id));
 
             if (result is null)
-                throw new RpcException(new Status(StatusCode.NotFound, $"Order {request.Id} not found"));
+                throw new RpcException(new Status(StatusCode.NotFound, $"Orden {request.Id} no encontrada"));
 
             var response = new OrderResponse
             {
@@ -126,7 +126,7 @@ namespace order_service.src.Grpc
             return new OperationResult
             {
                 Success = success,
-                Message = success ? "Order status updated" : $"Order {request.Id} not found"
+                Message = success ? "Estado de la orden actualizado" : $"Orden {request.Id} no encontrada o estado inválido"
             };
         }
 
@@ -137,7 +137,7 @@ namespace order_service.src.Grpc
             return new OperationResult
             {
                 Success = success,
-                Message = success ? "Order cancelled" : $"Order {request.Id} not found"
+                Message = success ? "Orden cancelada" : $"Orden {request.Id} no encontrada o no se puede cancelar (Orden ya enviada/entregada)"
             };
         }
     }
