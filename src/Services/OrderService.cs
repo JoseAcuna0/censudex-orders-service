@@ -16,10 +16,15 @@ namespace order_service.src.Services
     {
         private readonly OrderDbContext _context;
 
-        public OrderService(OrderDbContext context)
+        private readonly SendGridService _emailManager;
+
+        public OrderService(OrderDbContext context, SendGridService emailManager)
         {
             _context = context;
+            _emailManager = emailManager;
         }
+
+        
 
         public async Task<OrderResponseDto> CreateOrderAsync(OrderCreateDto dto)
         {
@@ -37,6 +42,26 @@ namespace order_service.src.Services
 
             using var rabbit = new RabbitMqService();
             rabbit.SendOrderToInventory(order.Id.ToString());
+
+            if (order.Status == "En Procedimiento")
+            {
+                var subject = "Confirmación de su orden";
+                var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
+                                  $"<p>Su orden con ID {order.Id} ha sido creada exitosamente el {order.OrderDate}.</p>" +
+                                  $"<p>El monto total de su orden es ${order.TotalAmount}.</p>" +
+                                  "<p>Gracias por comprar con nosotros.</p>";
+
+                await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
+            }
+            if (order.Status == "Cancelada")
+            {
+                var subject = "Notificación de cancelación de su orden";
+                var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
+                                  $"<p>Su orden con ID {order.Id} ha sido cancelada.</p>" +
+                                  "<p>Si tiene alguna pregunta, no dude en contactarnos.</p>";
+
+                await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
+            }
             
 
             return OrderMapper.ToResponseDto(order);
@@ -69,6 +94,26 @@ namespace order_service.src.Services
             {
                 order.Status = newStatus;
                 await _context.SaveChangesAsync();
+
+                if (newStatus == "Entregado")
+                {
+                    var subject = "Notificación de entrega de su orden";
+                    var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
+                                      $"<p>Su orden con ID {order.Id} ha sido entregada exitosamente.</p>" +
+                                      "<p>Gracias por comprar con nosotros.</p>";
+
+                    await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
+                }
+                
+                if (newStatus == "Enviado")
+                {
+                    var subject = "Notificación de envío de su orden";
+                    var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
+                                      $"<p>Su orden con ID {order.Id} ha sido enviada.</p>" +
+                                      "<p>Pronto la recibirá.</p>";
+
+                    await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
+                }
                 return true;
             }
             
@@ -79,9 +124,16 @@ namespace order_service.src.Services
         {
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return false;
-            
+
             order.Status = "Cancelada";
             await _context.SaveChangesAsync();
+
+            var subject = "Notificación de cancelación de su orden";
+            var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
+                              $"<p>Su orden con ID {order.Id} ha sido cancelada.</p>" +
+                              "<p>Si tiene alguna pregunta, no dude en contactarnos.</p>";
+
+            await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
 
             return true;
         }

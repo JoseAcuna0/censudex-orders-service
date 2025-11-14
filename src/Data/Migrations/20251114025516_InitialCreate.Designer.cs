@@ -9,11 +9,11 @@ using order_service.src.Data;
 
 #nullable disable
 
-namespace order_service.Migrations
+namespace order_service.src.Data.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20251102041857_Init")]
-    partial class Init
+    [Migration("20251114025516_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,10 @@ namespace order_service.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("CustomerEmail")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("char(36)");

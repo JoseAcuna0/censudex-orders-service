@@ -8,7 +8,7 @@ namespace order_service.src.Interface
 {
     public interface IOrderService
     {
-        //Crear una nueva orden
+
         Task<OrderResponseDto> CreateOrderAsync(OrderCreateDto dto);
 
         Task<IEnumerable<OrderResponseDto>> GetAllOrdersAsync();
