@@ -9,19 +9,18 @@ namespace order_service.src.Services
 {
     public class SendGridService
     {
-
         private readonly string _apiKey;
 
-        public SendGridService(string apiKey)
+        public SendGridService()
         {
-            _apiKey = apiKey;
+            _apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY") ?? throw new ArgumentNullException("SendGrid API Key is not configured.");
         }
 
         public async Task SendEmailAsync(string toEmail, string subject, string htmlContent)
         {
             
             var client = new SendGridClient(_apiKey);
-            var from = new EmailAddress("orders@taller2.com", "Order Service");
+            var from = new EmailAddress("aromadecantsantofa@gmail.com", "Order Service");
             var to = new EmailAddress(toEmail);
 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, htmlContent, htmlContent);

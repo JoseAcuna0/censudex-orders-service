@@ -37,17 +37,6 @@ namespace order_service.src.Services
 
             using var rabbit = new RabbitMqService();
             rabbit.SendOrderToInventory(order.Id.ToString());
-
-
-            if(order.Status == "confirmada")
-            {
-                Console.WriteLine("pene");
-            }
-
-            if(order.Status == "cancelada")
-            {
-                Console.WriteLine("pene2");
-            }
             
 
             return OrderMapper.ToResponseDto(order);
@@ -76,18 +65,22 @@ namespace order_service.src.Services
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return false;
 
-            order.Status = newStatus;
-            await _context.SaveChangesAsync();
-
-            return true;
+            if (newStatus == "Enviado" || newStatus == "Entregado")
+            {
+                order.Status = newStatus;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            
+            return false;
         }
 
         public async Task<bool> CancelOrderAsync(Guid id)
         {
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
             if (order is null) return false;
-
-            order.Status = "cancelada";
+            
+            order.Status = "Cancelada";
             await _context.SaveChangesAsync();
 
             return true;

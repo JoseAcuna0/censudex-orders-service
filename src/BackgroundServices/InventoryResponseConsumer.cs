@@ -41,7 +41,7 @@ namespace order_service.src.BackgroundServices
             consumer.Received += async (sender, ea) =>
             {
                 var message = Encoding.UTF8.GetString(ea.Body.ToArray());
-                var data = JsonSerializer.Deserialize<InventoryResponseDto>(message);
+                var data = JsonSerializer.Deserialize<InventoryResponseDto>(message)!;
 
                 Console.WriteLine($"Stock response: {message}");
 
@@ -52,7 +52,7 @@ namespace order_service.src.BackgroundServices
 
                 if (order != null)
                 {
-                    order.Status = data.HasStock ? "confirmada" : "cancelada";
+                    order.Status = data.HasStock ? "En Procesamiento" : "Cancelada";
                     await db.SaveChangesAsync();
                 }
 
@@ -73,7 +73,7 @@ namespace order_service.src.BackgroundServices
 
     public class InventoryResponseDto
     {
-        public string OrderId { get; set; }
+        public string OrderId { get; set; } = string.Empty!;
         public bool HasStock { get; set; }
     }
 }
