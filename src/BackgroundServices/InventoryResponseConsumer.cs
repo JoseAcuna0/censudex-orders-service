@@ -8,6 +8,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 using order_service.src.Data;
+using order_service.src.Services;
 
 namespace order_service.src.BackgroundServices
 {
@@ -54,6 +55,18 @@ namespace order_service.src.BackgroundServices
                 {
                     order.Status = data.HasStock ? "En Procesamiento" : "Cancelada";
                     await db.SaveChangesAsync();
+
+                    var email = scope.ServiceProvider.GetRequiredService<SendGridService>();
+
+                    string subject = data.HasStock
+                        ? "Tu orden fue confirmada"
+                        : "Tu orden fue rechazada por falta de stock";
+
+                    string html = data.HasStock
+                        ? $"<p>Hola {order.CustomerName}, tu orden {order.Id} fue confirmada.</p>"
+                        : $"<p>Hola {order.CustomerName}, tu orden {order.Id} fue rechazada por falta de stock.</p>";
+
+                    await email.SendEmailAsync(order.CustomerEmail, subject, html);
                 }
 
                 _channel.BasicAck(ea.DeliveryTag, false);

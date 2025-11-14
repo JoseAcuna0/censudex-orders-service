@@ -43,25 +43,14 @@ namespace order_service.src.Services
             using var rabbit = new RabbitMqService();
             rabbit.SendOrderToInventory(order.Id.ToString());
 
-            if (order.Status == "En Procedimiento")
-            {
-                var subject = "Confirmación de su orden";
-                var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
-                                  $"<p>Su orden con ID {order.Id} ha sido creada exitosamente el {order.OrderDate}.</p>" +
-                                  $"<p>El monto total de su orden es ${order.TotalAmount}.</p>" +
-                                  "<p>Gracias por comprar con nosotros.</p>";
+            var subject = "Tu orden ha sido creada";
+            var html = $@"
+                <h2>Hola {order.CustomerName}</h2>
+                <p>Tu orden fue registrada exitosamente.</p>
+                <p><b>ID:</b> {order.Id}</p>
+                <p>Te avisaremos cuando confirme el inventario.</p>";
 
-                await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
-            }
-            if (order.Status == "Cancelada")
-            {
-                var subject = "Notificación de cancelación de su orden";
-                var htmlContent = $"<p>Estimado {order.CustomerName},</p>" +
-                                  $"<p>Su orden con ID {order.Id} ha sido cancelada.</p>" +
-                                  "<p>Si tiene alguna pregunta, no dude en contactarnos.</p>";
-
-                await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
-            }
+            await _emailManager.SendEmailAsync(order.CustomerEmail, subject, html);
             
 
             return OrderMapper.ToResponseDto(order);
@@ -104,7 +93,7 @@ namespace order_service.src.Services
 
                     await _emailManager.SendEmailAsync(order.CustomerEmail, subject, htmlContent);
                 }
-                
+
                 if (newStatus == "Enviado")
                 {
                     var subject = "Notificación de envío de su orden";
