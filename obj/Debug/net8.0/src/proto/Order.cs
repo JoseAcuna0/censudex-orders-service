@@ -24,32 +24,33 @@ namespace order_service {
     static OrderReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVzcmMvcHJvdG8vb3JkZXIucHJvdG8SBm9yZGVycyJjChJDcmVhdGVPcmRl",
+            "ChVzcmMvcHJvdG8vb3JkZXIucHJvdG8SBm9yZGVycyJ6ChJDcmVhdGVPcmRl",
             "clJlcXVlc3QSEgoKY3VzdG9tZXJJZBgBIAEoCRIUCgxjdXN0b21lck5hbWUY",
-            "AiABKAkSIwoFaXRlbXMYAyADKAsyFC5vcmRlcnMuT3JkZXJJdGVtRHRvIlsK",
-            "DE9yZGVySXRlbUR0bxIRCglwcm9kdWN0SWQYASABKAkSEwoLcHJvZHVjdE5h",
-            "bWUYAiABKAkSEAoIcXVhbnRpdHkYAyABKAUSEQoJdW5pdFByaWNlGAQgASgB",
-            "IqIBCg1PcmRlclJlc3BvbnNlEgoKAmlkGAEgASgJEhIKCmN1c3RvbWVySWQY",
-            "AiABKAkSFAoMY3VzdG9tZXJOYW1lGAMgASgJEhEKCW9yZGVyRGF0ZRgEIAEo",
-            "CRITCgt0b3RhbEFtb3VudBgFIAEoARIOCgZzdGF0dXMYBiABKAkSIwoFaXRl",
-            "bXMYByADKAsyFC5vcmRlcnMuT3JkZXJJdGVtRHRvIjsKEk9yZGVyc0xpc3RS",
-            "ZXNwb25zZRIlCgZvcmRlcnMYASADKAsyFS5vcmRlcnMuT3JkZXJSZXNwb25z",
-            "ZSIeChBPcmRlckJ5SWRSZXF1ZXN0EgoKAmlkGAEgASgJIjQKE1VwZGF0ZVN0",
-            "YXR1c1JlcXVlc3QSCgoCaWQYASABKAkSEQoJbmV3U3RhdHVzGAIgASgJIjMK",
-            "D09wZXJhdGlvblJlc3VsdBIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UY",
-            "AiABKAkiBwoFRW1wdHky3QIKEE9yZGVyR3JwY1NlcnZpY2USQAoLQ3JlYXRl",
-            "T3JkZXISGi5vcmRlcnMuQ3JlYXRlT3JkZXJSZXF1ZXN0GhUub3JkZXJzLk9y",
-            "ZGVyUmVzcG9uc2USPwoMR2V0T3JkZXJCeUlkEhgub3JkZXJzLk9yZGVyQnlJ",
-            "ZFJlcXVlc3QaFS5vcmRlcnMuT3JkZXJSZXNwb25zZRI5CgxHZXRBbGxPcmRl",
-            "cnMSDS5vcmRlcnMuRW1wdHkaGi5vcmRlcnMuT3JkZXJzTGlzdFJlc3BvbnNl",
-            "EkkKEVVwZGF0ZU9yZGVyU3RhdHVzEhsub3JkZXJzLlVwZGF0ZVN0YXR1c1Jl",
-            "cXVlc3QaFy5vcmRlcnMuT3BlcmF0aW9uUmVzdWx0EkAKC0NhbmNlbE9yZGVy",
-            "Ehgub3JkZXJzLk9yZGVyQnlJZFJlcXVlc3QaFy5vcmRlcnMuT3BlcmF0aW9u",
-            "UmVzdWx0QhCqAg1vcmRlcl9zZXJ2aWNlYgZwcm90bzM="));
+            "AiABKAkSFQoNY3VzdG9tZXJFbWFpbBgDIAEoCRIjCgVpdGVtcxgEIAMoCzIU",
+            "Lm9yZGVycy5PcmRlckl0ZW1EdG8iWwoMT3JkZXJJdGVtRHRvEhEKCXByb2R1",
+            "Y3RJZBgBIAEoCRITCgtwcm9kdWN0TmFtZRgCIAEoCRIQCghxdWFudGl0eRgD",
+            "IAEoBRIRCgl1bml0UHJpY2UYBCABKAEiogEKDU9yZGVyUmVzcG9uc2USCgoC",
+            "aWQYASABKAkSEgoKY3VzdG9tZXJJZBgCIAEoCRIUCgxjdXN0b21lck5hbWUY",
+            "AyABKAkSEQoJb3JkZXJEYXRlGAQgASgJEhMKC3RvdGFsQW1vdW50GAUgASgB",
+            "Eg4KBnN0YXR1cxgGIAEoCRIjCgVpdGVtcxgHIAMoCzIULm9yZGVycy5PcmRl",
+            "ckl0ZW1EdG8iOwoST3JkZXJzTGlzdFJlc3BvbnNlEiUKBm9yZGVycxgBIAMo",
+            "CzIVLm9yZGVycy5PcmRlclJlc3BvbnNlIh4KEE9yZGVyQnlJZFJlcXVlc3QS",
+            "CgoCaWQYASABKAkiNAoTVXBkYXRlU3RhdHVzUmVxdWVzdBIKCgJpZBgBIAEo",
+            "CRIRCgluZXdTdGF0dXMYAiABKAkiMwoPT3BlcmF0aW9uUmVzdWx0Eg8KB3N1",
+            "Y2Nlc3MYASABKAgSDwoHbWVzc2FnZRgCIAEoCSIHCgVFbXB0eTLdAgoQT3Jk",
+            "ZXJHcnBjU2VydmljZRJACgtDcmVhdGVPcmRlchIaLm9yZGVycy5DcmVhdGVP",
+            "cmRlclJlcXVlc3QaFS5vcmRlcnMuT3JkZXJSZXNwb25zZRI/CgxHZXRPcmRl",
+            "ckJ5SWQSGC5vcmRlcnMuT3JkZXJCeUlkUmVxdWVzdBoVLm9yZGVycy5PcmRl",
+            "clJlc3BvbnNlEjkKDEdldEFsbE9yZGVycxINLm9yZGVycy5FbXB0eRoaLm9y",
+            "ZGVycy5PcmRlcnNMaXN0UmVzcG9uc2USSQoRVXBkYXRlT3JkZXJTdGF0dXMS",
+            "Gy5vcmRlcnMuVXBkYXRlU3RhdHVzUmVxdWVzdBoXLm9yZGVycy5PcGVyYXRp",
+            "b25SZXN1bHQSQAoLQ2FuY2VsT3JkZXISGC5vcmRlcnMuT3JkZXJCeUlkUmVx",
+            "dWVzdBoXLm9yZGVycy5PcGVyYXRpb25SZXN1bHRCEKoCDW9yZGVyX3NlcnZp",
+            "Y2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::order_service.CreateOrderRequest), global::order_service.CreateOrderRequest.Parser, new[]{ "CustomerId", "CustomerName", "Items" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::order_service.CreateOrderRequest), global::order_service.CreateOrderRequest.Parser, new[]{ "CustomerId", "CustomerName", "CustomerEmail", "Items" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::order_service.OrderItemDto), global::order_service.OrderItemDto.Parser, new[]{ "ProductId", "ProductName", "Quantity", "UnitPrice" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::order_service.OrderResponse), global::order_service.OrderResponse.Parser, new[]{ "Id", "CustomerId", "CustomerName", "OrderDate", "TotalAmount", "Status", "Items" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::order_service.OrdersListResponse), global::order_service.OrdersListResponse.Parser, new[]{ "Orders" }, null, null, null, null),
@@ -100,6 +101,7 @@ namespace order_service {
     public CreateOrderRequest(CreateOrderRequest other) : this() {
       customerId_ = other.customerId_;
       customerName_ = other.customerName_;
+      customerEmail_ = other.customerEmail_;
       items_ = other.items_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -134,10 +136,22 @@ namespace order_service {
       }
     }
 
+    /// <summary>Field number for the "customerEmail" field.</summary>
+    public const int CustomerEmailFieldNumber = 3;
+    private string customerEmail_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string CustomerEmail {
+      get { return customerEmail_; }
+      set {
+        customerEmail_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "items" field.</summary>
-    public const int ItemsFieldNumber = 3;
+    public const int ItemsFieldNumber = 4;
     private static readonly pb::FieldCodec<global::order_service.OrderItemDto> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(26, global::order_service.OrderItemDto.Parser);
+        = pb::FieldCodec.ForMessage(34, global::order_service.OrderItemDto.Parser);
     private readonly pbc::RepeatedField<global::order_service.OrderItemDto> items_ = new pbc::RepeatedField<global::order_service.OrderItemDto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -162,6 +176,7 @@ namespace order_service {
       }
       if (CustomerId != other.CustomerId) return false;
       if (CustomerName != other.CustomerName) return false;
+      if (CustomerEmail != other.CustomerEmail) return false;
       if(!items_.Equals(other.items_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -172,6 +187,7 @@ namespace order_service {
       int hash = 1;
       if (CustomerId.Length != 0) hash ^= CustomerId.GetHashCode();
       if (CustomerName.Length != 0) hash ^= CustomerName.GetHashCode();
+      if (CustomerEmail.Length != 0) hash ^= CustomerEmail.GetHashCode();
       hash ^= items_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -199,6 +215,10 @@ namespace order_service {
         output.WriteRawTag(18);
         output.WriteString(CustomerName);
       }
+      if (CustomerEmail.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(CustomerEmail);
+      }
       items_.WriteTo(output, _repeated_items_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -218,6 +238,10 @@ namespace order_service {
         output.WriteRawTag(18);
         output.WriteString(CustomerName);
       }
+      if (CustomerEmail.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(CustomerEmail);
+      }
       items_.WriteTo(ref output, _repeated_items_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,6 +258,9 @@ namespace order_service {
       }
       if (CustomerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(CustomerName);
+      }
+      if (CustomerEmail.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CustomerEmail);
       }
       size += items_.CalculateSize(_repeated_items_codec);
       if (_unknownFields != null) {
@@ -253,6 +280,9 @@ namespace order_service {
       }
       if (other.CustomerName.Length != 0) {
         CustomerName = other.CustomerName;
+      }
+      if (other.CustomerEmail.Length != 0) {
+        CustomerEmail = other.CustomerEmail;
       }
       items_.Add(other.items_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -283,6 +313,10 @@ namespace order_service {
             break;
           }
           case 26: {
+            CustomerEmail = input.ReadString();
+            break;
+          }
+          case 34: {
             items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
@@ -314,6 +348,10 @@ namespace order_service {
             break;
           }
           case 26: {
+            CustomerEmail = input.ReadString();
+            break;
+          }
+          case 34: {
             items_.AddEntriesFrom(ref input, _repeated_items_codec);
             break;
           }

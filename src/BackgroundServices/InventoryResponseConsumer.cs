@@ -52,7 +52,7 @@ namespace order_service.src.BackgroundServices
 
                 if (order != null)
                 {
-                    order.Status = data.HasStock ? "confirmada" : "rechazada_por_stock";
+                    order.Status = data.HasStock ? "confirmada" : "cancelada";
                     await db.SaveChangesAsync();
                 }
 

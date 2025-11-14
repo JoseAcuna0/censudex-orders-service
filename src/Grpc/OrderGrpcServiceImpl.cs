@@ -20,6 +20,7 @@ namespace order_service.src.Grpc
             {
                 CustomerId = Guid.Parse(request.CustomerId),
                 CustomerName = request.CustomerName,
+                CustomerEmail = request.CustomerEmail,
                 Items = request.Items.Select(i => new OrderItemAppDto
                 {
                     ProductId = Guid.Parse(i.ProductId),

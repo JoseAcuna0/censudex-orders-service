@@ -10,5 +10,7 @@ namespace order_service.src.DTOs
         public Guid CustomerId { get; set; }
         public string CustomerName { get; set; } = string.Empty;
         public List<OrderItemAppDto> Items { get; set; } = new List<OrderItemAppDto>();
+        public string CustomerEmail { get; set; } = string.Empty;
+
     }
 }

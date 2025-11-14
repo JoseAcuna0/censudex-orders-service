@@ -38,6 +38,18 @@ namespace order_service.src.Services
             using var rabbit = new RabbitMqService();
             rabbit.SendOrderToInventory(order.Id.ToString());
 
+
+            if(order.Status == "confirmada")
+            {
+                Console.WriteLine("pene");
+            }
+
+            if(order.Status == "cancelada")
+            {
+                Console.WriteLine("pene2");
+            }
+            
+
             return OrderMapper.ToResponseDto(order);
         }
 

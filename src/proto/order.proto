@@ -15,7 +15,8 @@ service OrderGrpcService {
 message CreateOrderRequest {
     string customerId = 1;
     string customerName = 2;
-    repeated OrderItemDto items = 3;
+    string customerEmail = 3;
+    repeated OrderItemDto items = 4;
 }
 
 message OrderItemDto {

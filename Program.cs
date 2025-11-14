@@ -8,6 +8,11 @@ using order_service.src.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<SendGridService>();
+var sendGridKey = builder.Configuration["SendGrid:ApiKey"];
+builder.Services.AddSingleton(new SendGridService(sendGridKey));
+
+
 builder.Services.AddHostedService<InventoryResponseConsumer>();
 
 builder.WebHost.ConfigureKestrel(options =>
