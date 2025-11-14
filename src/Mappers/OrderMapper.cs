@@ -35,6 +35,7 @@ namespace order_service.src.Mappers
             {
                 CustomerId = dto.CustomerId,
                 CustomerName = dto.CustomerName,
+                CustomerEmail = dto.CustomerEmail,
                 Status = "pendiente",
                 OrderDate = DateTime.UtcNow,
                 Items = dto.Items.Select(itemDto => new OrderItem
