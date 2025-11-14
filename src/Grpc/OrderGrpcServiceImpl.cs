@@ -5,17 +5,33 @@ using order_service.src.DTOs;
 
 namespace order_service.src.Grpc
 {
+    /// <summary>
+    /// Implementación de los servicios gRPC expuestos por el microservicio de Órdenes.
+    /// Esta clase recibe solicitudes desde otros servicios o clientes,
+    /// convierte los mensajes protobuf a DTOs de la aplicación, delega la lógica al OrderService
+    /// y devuelve las respuestas mapeadas nuevamente al formato protobuf.
+    /// </summary>
     public class OrderGrpcServiceImpl : OrderGrpcService.OrderGrpcServiceBase
     {
         private readonly IOrderService _orderService;
 
+        /// <summary>
+        /// Constructor que recibe la interfaz del servicio de órdenes
+        /// mediante inyección de dependencias.
+        /// </summary>
         public OrderGrpcServiceImpl(IOrderService orderService)
         {
             _orderService = orderService;
         }
 
+        /// <summary>
+        /// Crea una nueva orden en el sistema.
+        /// Convierte el mensaje gRPC en un DTO interno y delega al OrderService,
+        /// además de formatear el resultado nuevamente a una respuesta protobuf.
+        /// </summary>
         public override async Task<OrderResponse> CreateOrder(CreateOrderRequest request, ServerCallContext context)
         {
+            // Convertir request gRPC → DTO de aplicación
             var dto = new OrderCreateDto
             {
                 CustomerId = Guid.Parse(request.CustomerId),
@@ -32,7 +48,7 @@ namespace order_service.src.Grpc
 
             var result = await _orderService.CreateOrderAsync(dto);
 
-
+            // Convertir DTO → respuesta gRPC
             var response = new OrderResponse
             {
                 Id = result.Id.ToString(),
@@ -56,6 +72,11 @@ namespace order_service.src.Grpc
             return response;
         }
 
+
+        /// <summary>
+        /// Obtiene una orden según su identificador único (GUID).
+        /// Si la orden no existe, lanza una excepción RPC con código NOT_FOUND.
+        /// </summary>
         public override async Task<OrderResponse> GetOrderById(OrderByIdRequest request, ServerCallContext context)
         {
             var result = await _orderService.GetOrderByIdAsync(Guid.Parse(request.Id));
@@ -86,6 +107,11 @@ namespace order_service.src.Grpc
             return response;
         }
 
+
+        /// <summary>
+        /// Retorna todas las órdenes registradas en el sistema.
+        /// Devuelve una lista de OrderResponse dentro de OrdersListResponse.
+        /// </summary>
         public override async Task<OrdersListResponse> GetAllOrders(Empty request, ServerCallContext context)
         {
             var orders = await _orderService.GetAllOrdersAsync();
@@ -119,6 +145,11 @@ namespace order_service.src.Grpc
             return response;
         }
 
+
+        /// <summary>
+        /// Actualiza el estado de una orden según su ID.
+        /// Permitido solo para estados válidos como "Enviado" o "Entregado".
+        /// </summary>
         public override async Task<OperationResult> UpdateOrderStatus(UpdateStatusRequest request, ServerCallContext context)
         {
             var success = await _orderService.UpdateOrderAsync(Guid.Parse(request.Id), request.NewStatus);
@@ -126,10 +157,16 @@ namespace order_service.src.Grpc
             return new OperationResult
             {
                 Success = success,
-                Message = success ? "Estado de la orden actualizado" : $"Orden {request.Id} no encontrada o estado inválido"
+                Message = success 
+                    ? "Estado de la orden actualizado" 
+                    : $"Orden {request.Id} no encontrada o estado inválido"
             };
         }
 
+
+        /// <summary>
+        /// Cancela una orden, siempre que no haya sido enviada o entregada.
+        /// </summary>
         public override async Task<OperationResult> CancelOrder(OrderByIdRequest request, ServerCallContext context)
         {
             var success = await _orderService.CancelOrderAsync(Guid.Parse(request.Id));
@@ -137,7 +174,9 @@ namespace order_service.src.Grpc
             return new OperationResult
             {
                 Success = success,
-                Message = success ? "Orden cancelada" : $"Orden {request.Id} no encontrada o no se puede cancelar (Orden ya enviada/entregada)"
+                Message = success
+                    ? "Orden cancelada"
+                    : $"Orden {request.Id} no encontrada o no se puede cancelar"
             };
         }
     }
