@@ -71,7 +71,7 @@ namespace order_service.src.BackgroundServices
                 var message = Encoding.UTF8.GetString(ea.Body.ToArray());
                 var data = JsonSerializer.Deserialize<InventoryResponseDto>(message)!;
 
-                Console.WriteLine($"📩 Stock response received: {message}");
+                Console.WriteLine($"Stock response received: {message}");
 
                 // Creación de un scope para acceder al DbContext y SendGridService
                 using var scope = _serviceProvider.CreateScope();

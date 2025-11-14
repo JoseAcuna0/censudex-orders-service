@@ -64,6 +64,13 @@ namespace order_service {
 
   }
   #region Messages
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  CreateOrderRequest
+  ///  Datos necesarios para crear una orden.
+  ///  Incluye datos del cliente, correo, y los ítems comprados.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class CreateOrderRequest : pb::IMessage<CreateOrderRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -115,6 +122,9 @@ namespace order_service {
     /// <summary>Field number for the "customerId" field.</summary>
     public const int CustomerIdFieldNumber = 1;
     private string customerId_ = "";
+    /// <summary>
+    /// ID del cliente que realiza la compra.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CustomerId {
@@ -127,6 +137,9 @@ namespace order_service {
     /// <summary>Field number for the "customerName" field.</summary>
     public const int CustomerNameFieldNumber = 2;
     private string customerName_ = "";
+    /// <summary>
+    /// Nombre del cliente.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CustomerName {
@@ -139,6 +152,9 @@ namespace order_service {
     /// <summary>Field number for the "customerEmail" field.</summary>
     public const int CustomerEmailFieldNumber = 3;
     private string customerEmail_ = "";
+    /// <summary>
+    /// Correo del cliente (usado para notificaciones SendGrid).
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CustomerEmail {
@@ -153,6 +169,9 @@ namespace order_service {
     private static readonly pb::FieldCodec<global::order_service.OrderItemDto> _repeated_items_codec
         = pb::FieldCodec.ForMessage(34, global::order_service.OrderItemDto.Parser);
     private readonly pbc::RepeatedField<global::order_service.OrderItemDto> items_ = new pbc::RepeatedField<global::order_service.OrderItemDto>();
+    /// <summary>
+    /// Ítems incluidos en la orden.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::order_service.OrderItemDto> Items {
@@ -362,6 +381,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OrderItemDto
+  ///  Representa un producto dentro de una orden.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OrderItemDto : pb::IMessage<OrderItemDto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -413,6 +438,9 @@ namespace order_service {
     /// <summary>Field number for the "productId" field.</summary>
     public const int ProductIdFieldNumber = 1;
     private string productId_ = "";
+    /// <summary>
+    /// ID del producto.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string ProductId {
@@ -425,6 +453,9 @@ namespace order_service {
     /// <summary>Field number for the "productName" field.</summary>
     public const int ProductNameFieldNumber = 2;
     private string productName_ = "";
+    /// <summary>
+    /// Nombre del producto.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string ProductName {
@@ -437,6 +468,9 @@ namespace order_service {
     /// <summary>Field number for the "quantity" field.</summary>
     public const int QuantityFieldNumber = 3;
     private int quantity_;
+    /// <summary>
+    /// Cantidad solicitada.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Quantity {
@@ -449,6 +483,9 @@ namespace order_service {
     /// <summary>Field number for the "unitPrice" field.</summary>
     public const int UnitPriceFieldNumber = 4;
     private double unitPrice_;
+    /// <summary>
+    /// Precio unitario.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double UnitPrice {
@@ -671,6 +708,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OrderResponse
+  ///  Respuesta con toda la información de la orden creada o consultada.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OrderResponse : pb::IMessage<OrderResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -725,6 +768,9 @@ namespace order_service {
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private string id_ = "";
+    /// <summary>
+    /// ID único de la orden.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Id {
@@ -737,6 +783,9 @@ namespace order_service {
     /// <summary>Field number for the "customerId" field.</summary>
     public const int CustomerIdFieldNumber = 2;
     private string customerId_ = "";
+    /// <summary>
+    /// ID del cliente.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CustomerId {
@@ -749,6 +798,9 @@ namespace order_service {
     /// <summary>Field number for the "customerName" field.</summary>
     public const int CustomerNameFieldNumber = 3;
     private string customerName_ = "";
+    /// <summary>
+    /// Nombre del cliente.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CustomerName {
@@ -761,6 +813,9 @@ namespace order_service {
     /// <summary>Field number for the "orderDate" field.</summary>
     public const int OrderDateFieldNumber = 4;
     private string orderDate_ = "";
+    /// <summary>
+    /// Fecha de creación de la orden (en formato ISO 8601).
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string OrderDate {
@@ -773,6 +828,9 @@ namespace order_service {
     /// <summary>Field number for the "totalAmount" field.</summary>
     public const int TotalAmountFieldNumber = 5;
     private double totalAmount_;
+    /// <summary>
+    /// Monto total de la orden.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double TotalAmount {
@@ -785,6 +843,9 @@ namespace order_service {
     /// <summary>Field number for the "status" field.</summary>
     public const int StatusFieldNumber = 6;
     private string status_ = "";
+    /// <summary>
+    /// Estado actual de la orden (Pendiente, En Proceso, Cancelada, etc.).
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Status {
@@ -799,6 +860,9 @@ namespace order_service {
     private static readonly pb::FieldCodec<global::order_service.OrderItemDto> _repeated_items_codec
         = pb::FieldCodec.ForMessage(58, global::order_service.OrderItemDto.Parser);
     private readonly pbc::RepeatedField<global::order_service.OrderItemDto> items_ = new pbc::RepeatedField<global::order_service.OrderItemDto>();
+    /// <summary>
+    /// Lista de productos asociados a la orden.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::order_service.OrderItemDto> Items {
@@ -1080,6 +1144,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OrdersListResponse
+  ///  Contiene una lista completa de órdenes.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OrdersListResponse : pb::IMessage<OrdersListResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1267,6 +1337,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OrderByIdRequest
+  ///  Solicita una orden mediante su ID.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OrderByIdRequest : pb::IMessage<OrderByIdRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1465,6 +1541,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  UpdateStatusRequest
+  ///  Solicita un cambio de estado en una orden.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class UpdateStatusRequest : pb::IMessage<UpdateStatusRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1514,6 +1596,9 @@ namespace order_service {
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
     private string id_ = "";
+    /// <summary>
+    /// ID de la orden a actualizar.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Id {
@@ -1526,6 +1611,9 @@ namespace order_service {
     /// <summary>Field number for the "newStatus" field.</summary>
     public const int NewStatusFieldNumber = 2;
     private string newStatus_ = "";
+    /// <summary>
+    /// Nuevo estado (Enviado, Entregado, etc.)
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string NewStatus {
@@ -1700,6 +1788,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OperationResult
+  ///  Resultado estándar de operaciones: éxito + mensaje.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OperationResult : pb::IMessage<OperationResult>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1749,6 +1843,9 @@ namespace order_service {
     /// <summary>Field number for the "success" field.</summary>
     public const int SuccessFieldNumber = 1;
     private bool success_;
+    /// <summary>
+    /// Indica si la operación fue exitosa.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Success {
@@ -1761,6 +1858,9 @@ namespace order_service {
     /// <summary>Field number for the "message" field.</summary>
     public const int MessageFieldNumber = 2;
     private string message_ = "";
+    /// <summary>
+    /// Mensaje asociado al resultado.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Message {
@@ -1935,6 +2035,12 @@ namespace order_service {
 
   }
 
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  Empty
+  ///  Mensaje vacío utilizado en métodos sin parámetros.
+  /// --------------------------------------------------------
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Empty : pb::IMessage<Empty>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE

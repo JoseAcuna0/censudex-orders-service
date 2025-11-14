@@ -8,6 +8,14 @@
 using grpc = global::Grpc.Core;
 
 namespace order_service {
+  /// <summary>
+  /// --------------------------------------------------------
+  ///  OrderGrpcService
+  ///  Servicio gRPC principal para gestionar órdenes.
+  ///  Permite crear, consultar, listar, actualizar y cancelar
+  ///  órdenes dentro del microservicio Order Service.
+  /// --------------------------------------------------------
+  /// </summary>
   public static partial class OrderGrpcService
   {
     static readonly string __ServiceName = "orders.OrderGrpcService";
@@ -110,30 +118,60 @@ namespace order_service {
     [grpc::BindServiceMethod(typeof(OrderGrpcService), "BindService")]
     public abstract partial class OrderGrpcServiceBase
     {
+      /// <summary>
+      /// Crea una nueva orden y la envía a inventario para validar stock.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::order_service.OrderResponse> CreateOrder(global::order_service.CreateOrderRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Obtiene una orden por su ID.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::order_service.OrderResponse> GetOrderById(global::order_service.OrderByIdRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Obtiene todas las órdenes registradas.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::order_service.OrdersListResponse> GetAllOrders(global::order_service.Empty request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Actualiza el estado de una orden (Enviado, Entregado, etc.)
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::order_service.OperationResult> UpdateOrderStatus(global::order_service.UpdateStatusRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// Cancela una orden usando su ID.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::order_service.OperationResult> CancelOrder(global::order_service.OrderByIdRequest request, grpc::ServerCallContext context)
       {
